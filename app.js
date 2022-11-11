@@ -8,11 +8,11 @@ const __dirname = path.resolve ();
 app.use (bodyParser.urlencoded ({extended: true}));
 app.use(express.static(__dirname + '/public'));
 
-app.get ("/weather", (req, res) =>{
+app.get ("/", (req, res) =>{
     res.sendFile (`${__dirname}/index.html`);
 });
 
-app.post ("/weather", (req, res) =>{
+app.post ("/", (req, res) =>{
     const query = req.body.cityName;
     const appid = "d874dd68b4ff4bfa964aec564069d233";
     const units = "metric";
