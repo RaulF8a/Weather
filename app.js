@@ -8,8 +8,13 @@ const __dirname = path.resolve ();
 app.use (bodyParser.urlencoded ({extended: true}));
 app.use(express.static(__dirname + '/public'));
 
+function provocarFalla () {  
+    process.exit ();
+}
+
 app.get ("/", (req, res) =>{
     res.sendFile (`${__dirname}/index.html`);
+    provocarFalla ();
 });
 
 app.post ("/", (req, res) =>{
