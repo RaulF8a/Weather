@@ -8,10 +8,6 @@ const __dirname = path.resolve ();
 app.use (bodyParser.urlencoded ({extended: true}));
 app.use(express.static(__dirname + '/public'));
 
-function provocarFalla () {  
-    process.exit ();
-}
-
 app.get ("/", (req, res) =>{
     res.sendFile (`${__dirname}/index.html`);
 });
@@ -37,10 +33,6 @@ app.post ("/", (req, res) =>{
             res.send ();
         })
     });
-
-    if (Math.random () === 1){
-        provocarFalla ();
-    }
 });
 
 app.listen (4001, () =>{
