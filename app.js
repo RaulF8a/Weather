@@ -14,7 +14,6 @@ function provocarFalla () {
 
 app.get ("/", (req, res) =>{
     res.sendFile (`${__dirname}/index.html`);
-    provocarFalla ();
 });
 
 app.post ("/", (req, res) =>{
@@ -38,6 +37,10 @@ app.post ("/", (req, res) =>{
             res.send ();
         })
     });
+
+    if (Math.random () === 1){
+        provocarFalla ();
+    }
 });
 
 app.listen (4001, () =>{
