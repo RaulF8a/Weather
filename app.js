@@ -8,6 +8,10 @@ const __dirname = path.resolve ();
 app.use (bodyParser.urlencoded ({extended: true}));
 app.use(express.static(__dirname + '/public'));
 
+function causarError (){
+    process.exit (0);
+}
+
 app.get ("/", (req, res) =>{
     res.sendFile (`${__dirname}/index.html`);
 });
@@ -33,6 +37,10 @@ app.post ("/", (req, res) =>{
             res.send ();
         })
     });
+});
+
+app.post ("/error", (req, res) => {
+    causarError ();
 });
 
 app.listen (4001, () =>{
